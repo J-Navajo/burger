@@ -7,8 +7,8 @@ const burger = {
         })
     },
 
-    insertOne: function(burger, controllerCB) {
-        orm.insertOne("burgers", ["burger", "devoured"],[burger, false], 
+    insertOne: function(burgerName, controllerCB) {
+        orm.insertOne("burgers", ["burger_name", "devoured"],[burgerName, false], 
         function(result) {
             controllerCB(result)
         })
