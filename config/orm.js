@@ -11,10 +11,17 @@ const orm = {
     },
 
     insertOne: function(table, col, val, cb) {
-        connection.query("INSERT INTO ?? (??, ??)val (?, ?)", [table,...col,...val], 
+        connection.query("INSERT INTO ?? (??, ??) VALUES (?, ?)", [table,...col,...val], 
         function(err, result) {
             cb(result);
         });
+    },
+
+    updateOne: function(table, col2, val2, cb) {
+      const update = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
+      connection.query(update, [table, col2, val2], function(err, result) {
+        cb(result);
+      })
     }
 
 
