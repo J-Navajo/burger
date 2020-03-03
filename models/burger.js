@@ -1,7 +1,7 @@
 const orm = require("../config/orm.js");
 
 const burger = {
-    all: function(controllerCB) {
+    selectAll: function(controllerCB) {
         orm.selectAll("burgers", function(result) {
             controllerCB(result)
         })
@@ -12,6 +12,12 @@ const burger = {
         function(result) {
             controllerCB(result)
         })
+    },
+
+    updateOne: function(burgerName, condition, controllerCB) {
+        orm.updateOne("burgers", burgerName, condition, function(result) {
+            controllerCB(result);
+        });
     }
 }
 
