@@ -1,3 +1,14 @@
+body {
+  background: gray;
+}
+
+
+#burgerimage {
+  height: 100px;
+  width: 100px;
+  margin: 3px;
+}
+
 li {
     padding: 5px;
     margin: 5px;
