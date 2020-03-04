@@ -1,10 +1,10 @@
 $(function () {
     $(".futureDevoured").on("click", function (event) {
-        event.preventDefault();
+        // event.preventDefault();
         const id = $(this).data("id");
-        const newDevoured = $(this).data("newDevoured");
+        const newDevoured = $(this).data("newdevoured");
 
-        const newDevouredState = {
+        let newDevouredState = {
             devoured: newDevoured
         };
 
@@ -22,21 +22,22 @@ $(function () {
     });
 
 
-    $(".create-form").on("submit", function (event) {
+    $(".create-form").on("submit", function(event) {
         event.preventDefault();
 
         const newBurger = {
-            burger: $("burg").val().trim(),
-            devoured: false
+            name: $("#burg").val().trim(),
+            devoured: $("[name=devoured]:checked").val().trim()
         };
 
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
-        })
-            .then(function () {
+        }).then(
+            function () {
                 console.log("created a new burger");
                 location.reload();
-            });
+            }
+        );
     });
 });

@@ -1,12 +1,12 @@
 <h1>Burgers!</h1>
 
-<img id="burgerimage" src="/public/assets/img/burger.png">
+<img id="burgerimage" src="/assets/img/burger.png">
 
 <ul>
-    <h2>New Burgers</h2>
-    {{#each burger}}
-        {{#unless this.devoured}}
-            {{this.burger_name}} <button id="devoured">Devoured it!</button><br>
+<h2>New Burgers</h2>
+    {{#each burgers}}
+        {{#unless devoured}}
+            {{> burgers/burger-block devoured=true}} 
         {{/unless}}
     {{/each}}
 </ul>
@@ -14,10 +14,10 @@
 <h2>Devoured Burgers</h2>
 
 <ul>
-    {{#each burger}}
-        {{#if this.devoured}}
-            {{this.burger_name}} <br>
-            
+    {{#each burgers}}
+        {{#if devoured}}
+            {{> burgers/burger-block devoured=false}} <br>
+
         {{/if}}
     {{/each}}
 </ul>
@@ -29,6 +29,12 @@
         <input type="text" id="burg" name="name">
     </div>
 
-    <button id="button" type="submit">Submit</button>
+    <div class="form-group">
+        <label for="devoured">Devoured?</label><br>
+        <input type="radio" name="devoured" value="1"> Devoured!!!<br>
+        <input type="radio" name="devoured" value="0" checked> New Burger
+    </div>
+
+    <button type="submit">Add Burger</button>
 
 </form>

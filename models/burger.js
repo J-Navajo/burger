@@ -1,24 +1,25 @@
 const orm = require("../config/orm.js");
 
 const burger = {
-    selectAll: function(controllerCB) {
-        orm.selectAll("burgers", function(result) {
-            controllerCB(result)
-        })
+    selectAll: function(cb) {
+        orm.selectAll("burgers", function(res) {
+            cb(res)
+        });
     },
 
-    insertOne: function(burgerName, controllerCB) {
-        orm.insertOne("burgers", ["burger_name", "devoured"],[burgerName, false], 
-        function(result) {
-            controllerCB(result)
-        })
+    insertOne: function(cols, vals, cb) {
+        orm.insertOne("burgers", cols, vals, function(res) {
+        // orm.insertOne("burgers", ["burger_name", "devoured"],[burgerName, false], 
+        // function(result) {
+            cb(res);
+        });
     },
 
-    updateOne: function(burgerName, condition, controllerCB) {
-        orm.updateOne("burgers", burgerName, condition, function(result) {
-            controllerCB(result);
+    updateOne: function(cols, vals, condition, cb) {
+        orm.updateOne("burgers", cols, vals, condition, function(res) {
+            cb(res);
         });
     }
-}
+};
 
 module.exports = burger;
