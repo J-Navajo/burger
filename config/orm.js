@@ -46,11 +46,11 @@ const orm = {
     });
     },
 
-    updateOne: function(table, cols, vals, condition, cb) {
-      const queryString = "UPDATE ?? SET ?? WHERE ??";
+    updateOne: function(table, cols, condition, cb) {
+      const queryString = "UPDATE ?? SET ?? WHERE `id=6`";
       console.log(queryString);
 
-      connection.query(queryString, [table, objToSql(cols), vals, condition], function(err, result) {
+      connection.query(queryString, [table, objToSql(cols)], function(err, result) {
         if (err) {
           throw err;
         }
